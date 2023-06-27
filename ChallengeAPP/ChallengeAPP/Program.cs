@@ -4,7 +4,7 @@ char[] letters = numberInString.ToArray();
 
 int total0 = 0;
 int total1 = 0;
-int total2 = 0;
+int total2 = 0; 
 int total3 = 0;
 int total4 = 0;
 int total5 = 0;
