@@ -1,6 +1,6 @@
 ﻿namespace ChallengeAPP
 {
-    public class Employee
+    public class Employee 
     {
         private List<int> grade = new List<int>();
        
