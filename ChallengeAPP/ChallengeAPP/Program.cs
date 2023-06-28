@@ -28,7 +28,6 @@ List<Employee> employees = new List<Employee>()
 };
 
 int maxResult = 0;
- 
 Employee employeeWithMaxResult = null;
 
 foreach (var employee in employees )
