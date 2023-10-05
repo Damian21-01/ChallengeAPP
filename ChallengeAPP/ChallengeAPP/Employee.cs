@@ -2,37 +2,102 @@
 {
     public class Employee 
     {
-        private List<int> grade = new List<int>();
-       
-        public Employee(string name)
-        {
-            this.Name = name;  
-        }
-
-        public Employee(string name, string surname, int age)
-        {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
-            
-        }
+        private List<float> grades = new List<float>();
 
         public string Name { get; private set; }
 
         public string Surname { get; private set; }
 
-        public int Age { get; private set; }
-        public int Result
+        public Employee(string name, string surname)
         {
-            get
-            {
-                return this.grade.Sum();
-            }
+            this.Name = name;
+            this.Surname = surname;
         }
 
-        public void AddGrade(int number)
+        public void AddGrade(float grade)
         {
-            this.grade.Add(number);
+
+            if (grade >= 0 && grade <= 100)
+            {
+                this.grades.Add(grade); ;
+            }
+            else
+            {
+                Console.WriteLine("Invalid grade value");
+            }
         }
+        public void AddGrade(double grade)
+        {
+            float valueInDouble = (float)grade;
+            AddGrade(valueInDouble);
+        }
+
+        public void AddGrade(long grade)
+        {
+            float valueInLong = (float)grade;
+            AddGrade(valueInLong);
+        }
+
+        public void AddGrade(decimal grade)
+        {
+            float valueInDecimal = (float)grade;
+            AddGrade(valueInDecimal);
+        }
+        public void AddGrade(string grade)
+        {
+            if (float.TryParse(grade, out float result))
+            {
+                AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("String is not float");
+            }
+        }
+       
+        public Statistics GetStatistics()
+        {
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;   
+            
+            foreach (var grade in grades) 
+            {
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average = statistics.Average + grade;
+            }
+
+            statistics.Average = statistics.Average / this.grades.Count;
+
+
+            return statistics;
+
+        }
+
+        public object GetStatistisc()
+        {
+            throw new NotImplementedException();
+        }
+
+        /*public Statistics GetStatistics()
+        {
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach(var grade in this.grades) 
+            {
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average+= grade;
+            }
+
+            statistics.Average = statistics.Average / this.grades.Count;
+
+            return statistics;
+        }*/
     }
 }
