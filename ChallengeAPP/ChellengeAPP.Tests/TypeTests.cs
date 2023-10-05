@@ -1,4 +1,4 @@
-﻿using ChallengeAPP;
+﻿/*using ChallengeAPP;
 
 namespace ChellengeAPP.Tests
 {
@@ -43,9 +43,9 @@ namespace ChellengeAPP.Tests
             // assert 
             Assert.AreNotEqual(employee1, employee2); 
         }
-        private Employee GetEmployee(string name)
+        private Employee GetEmployee(string name, string surname)
         {
-            return new Employee(name);
+            return new Employee(name, surname);
         }
     }
 }
